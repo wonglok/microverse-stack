@@ -1,7 +1,10 @@
 const express = require("express");
-const app = express();
-const port = 3000;
+const helmet = require("helmet");
 
+const app = express();
+const port = 5001;
+
+app.use(helmet());
 app.use(express.static("dist"));
 
 app.get("/api", (req, res) => {
