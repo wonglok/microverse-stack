@@ -1,0 +1,28 @@
+{
+  "name": "microverse",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node ./server.cjs",
+    "dev": "concurrently \"npm run dev1\" \"npm run dev2\" ",
+    "dev2": "nodemon ./server.cjs",
+    "dev1": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0",
+    "express": "^4.18.2",
+    "helmet": "^6.0.1",
+    "nodemon": "^2.0.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "vite": "^4.2.0"
+  }
+}
