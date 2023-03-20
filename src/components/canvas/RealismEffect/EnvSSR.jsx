@@ -159,10 +159,8 @@ export function EnvSSR({ customLighting = null }) {
 
       // if (process.env.NODE_ENV === 'development' && window.innerWidth >= 1024) {
       //   let { SSGIDebugGUI } = await import('./realism/SSGIDebugGUI')
-
       //   if (typeof ssEffect !== 'undefined') {
       //     let ssgidebug = new SSGIDebugGUI(ssEffect, options)
-
       //     cleans.push(() => {
       //       ssgidebug.clean()
       //     })
