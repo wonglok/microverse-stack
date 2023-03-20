@@ -10,6 +10,7 @@ const io = new Server(server, {
     allowedHeaders: ["my-custom-header"],
   },
 });
+
 const cors = require("cors");
 
 const port = 3000;
@@ -24,16 +25,27 @@ app.options(
   })
 );
 
+// src
+
 app.get("/", (req, res) => {
   res.json({ yo: true });
 });
 
-io.on("connection", (socket) => {
-  console.log("a user connected");
+//
+let rooms = {};
 
-  console.log("a user connected");
+io.on("connection", (socket) => {
+  console.log("a user connected", socket.id);
+
+  socket.on("enter", () => {
+    //
+  });
+  socket.on("walk", (ev) => {
+    io.emit("walk", ev);
+  });
+
   socket.on("disconnect", () => {
-    console.log("user disconnected");
+    console.log("user disconnected", socket.id);
   });
 });
 

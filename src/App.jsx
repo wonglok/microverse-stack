@@ -1,31 +1,30 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import "./App.css";
-import { BackConfig } from "../config.js";
-import { io } from "socket.io-client";
-function App() {
-  var socket = useMemo(() => {
-    return io(`${BackConfig.ws[process.env.NODE_ENV]}`, {
-      //
-      extraHeaders: {
-        "my-custom-header": "abcd",
-      },
-    });
-  });
+import {
+  createBrowserRouter,
+  RouterProvider,
+  // Route,
+  Link,
+} from "react-router-dom";
+import { MetaApp } from "./components/canvas/MetaApp/MetaApp";
 
-  let inputRef = useRef();
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MetaApp></MetaApp>,
+  },
+  {
+    path: "/smooth",
+    element: <MetaApp></MetaApp>,
+  },
+  {
+    path: "/quality",
+    element: <MetaApp mode="quality"></MetaApp>,
+  },
+]);
+
+export default function App() {
   return (
-    <div className="App">
-      <input ref={inputRef} type="text"></input>
-      <button
-        onClick={() => {
-          let input = inputRef.current;
-          socket.emit("chat message", input.value);
-        }}
-      >
-        Send
-      </button>
-    </div>
+    <>
+      <RouterProvider fallbackElement={<div>Error</div>} router={router} />
+    </>
   );
 }
-
-export default App;
