@@ -80,7 +80,7 @@ export function EnvSSR({ customLighting = null }) {
         jitter: 0.05,
         jitterRoughness: 0.05,
         steps: 20,
-        refineSteps: 5,
+        refineSteps: 3,
         missedRays: true,
         useNormalMap: true,
         useRoughnessMap: true,
@@ -88,8 +88,13 @@ export function EnvSSR({ customLighting = null }) {
         velocityResolutionScale: 1.0,
       };
       let { SSREffect } = await import("./ssr/index");
+      SSREffect.patchDirectEnvIntensity(0.5);
 
       let ssrEf = new SSREffect(scene, camera, ssrOptions);
+
+      setInterval(() => {
+        ssrEf.refineSteps = 2.0 + Math.random() >= 0.5 ? 1 : 0;
+      }, 10);
 
       const ssrPass = new POST.EffectPass(camera, ssrEf);
 
