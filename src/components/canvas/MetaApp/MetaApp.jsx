@@ -89,7 +89,7 @@ export function MetaApp({}) {
                 onClick={() => {
                   useMeta.setState({ renderMdoe: "smooth", showPhase: "game" });
                 }}
-                className=" inline-block ml-2 p-3 w-32 h-32 bg-gray-200 text-center rounded-2xl"
+                className=" inline-block mx-2 p-3 w-32 h-32 bg-gray-200 shadow-xl shadow-gray-500  text-center rounded-2xl"
               >
                 Smooth Experience
               </button>
@@ -100,7 +100,7 @@ export function MetaApp({}) {
                     showPhase: "game",
                   });
                 }}
-                className=" inline-block mx-2 p-3 w-32 h-32 bg-gray-200 shadow-inner shadow-gray-500  text-center rounded-2xl"
+                className=" inline-block mx-2 p-3 w-32 h-32 bg-gray-200 shadow-xl shadow-gray-500  text-center rounded-2xl"
               >
                 High Quality Experience
               </button>
