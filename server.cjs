@@ -25,6 +25,8 @@ app.options(
   })
 );
 
+app.use(express.static("dist"));
+
 // src
 
 // app.get("/", (req, res) => {
