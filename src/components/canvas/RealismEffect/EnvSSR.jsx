@@ -172,6 +172,10 @@ export function EnvSSR({ customLighting = null }) {
       setComposer((s) => {
         return composer;
       });
+
+      cleans.push(() => {
+        composer.dispose();
+      });
     });
 
     return () => {
