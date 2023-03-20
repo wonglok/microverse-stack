@@ -93,8 +93,8 @@ export function EnvSSR({ customLighting = null }) {
       let ssrEf = new SSREffect(scene, camera, ssrOptions);
 
       setInterval(() => {
-        ssrEf.refineSteps = 2.0 + Math.random() >= 0.5 ? 1 : 0;
-      }, 10);
+        ssrEf.steps = 19.0 + Math.random() >= 0.5 ? 1 : 0;
+      }, 100);
 
       const ssrPass = new POST.EffectPass(camera, ssrEf);
 
