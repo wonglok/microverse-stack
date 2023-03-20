@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import { useEffect, useMemo, useRef, useState } from "react";
+import "./App.css";
+import { BackConfig } from "../config.js";
+import { io } from "socket.io-client";
 function App() {
-  const [count, setCount] = useState(0)
+  var socket = useMemo(() => {
+    return io(`${BackConfig.ws[process.env.NODE_ENV]}`, {
+      //
+      extraHeaders: {
+        "my-custom-header": "abcd",
+      },
+    });
+  });
 
+  let inputRef = useRef();
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <input ref={inputRef} type="text"></input>
+      <button
+        onClick={() => {
+          let input = inputRef.current;
+          socket.emit("chat message", input.value);
+        }}
+      >
+        Send
+      </button>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

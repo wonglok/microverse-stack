@@ -8,16 +8,29 @@
     "dev": "concurrently \"npm run dev1\" \"npm run dev2\" ",
     "dev2": "nodemon ./server.cjs",
     "dev1": "vite",
+    "deploy": "vite build; ",
     "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@teamwork/websocket-json-stream": "^2.0.0",
     "concurrently": "^7.6.0",
+    "cors": "^2.8.5",
+    "events": "^3.3.0",
     "express": "^4.18.2",
     "helmet": "^6.0.1",
+    "lib0": "^0.2.69",
     "nodemon": "^2.0.21",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "reconnecting-websocket": "^4.4.0",
+    "sharedb": "^3.3.0",
+    "socket.io": "^4.6.1",
+    "socket.io-client": "^4.6.1",
+    "ws": "^8.13.0",
+    "y-protocols": "^1.0.5",
+    "y-websocket": "^1.5.0",
+    "yjs": "^13.5.50"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

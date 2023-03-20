@@ -1,16 +1,42 @@
 const express = require("express");
-// const helmet = require("helmet");
-
 const app = express();
+const http = require("http");
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+  },
+});
+const cors = require("cors");
+
 const port = 3000;
 
-// app.use(helmet());
-app.use(express.static("dist"));
+app.options(
+  cors({
+    origin: true,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE, OPTION",
+    allowedHeaders: ["Access-Control-Allow-Origin"],
+    credentials: true,
+    maxAge: 3600,
+  })
+);
 
-app.get("/api", (req, res) => {
-  res.send("Hello World!");
+app.get("/", (req, res) => {
+  res.json({ yo: true });
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+io.on("connection", (socket) => {
+  console.log("a user connected");
+
+  console.log("a user connected");
+  socket.on("disconnect", () => {
+    console.log("user disconnected");
+  });
+});
+
+server.listen(port, () => {
+  console.log("listening on *:3000");
 });
