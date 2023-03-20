@@ -70,6 +70,8 @@ export function MetaApp({}) {
         </div>
       )}
 
+      {/* https://microverse-tencent.meta-os.app/ */}
+
       {showPhase === "menu" && (
         <div
           className="bg-white bg-opacity-30 absolute rounded-xl shadow-2xl  backdrop-blur-lg shadow-black"
