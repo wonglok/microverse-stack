@@ -72,7 +72,7 @@ export function MetaApp({}) {
 
       {showPhase === "menu" && (
         <div
-          className="bg-white bg-opacity-30 absolute rounded-xl shadow-2xl  backdrop-blur-lg"
+          className="bg-white bg-opacity-30 absolute rounded-xl shadow-2xl  backdrop-blur-lg shadow-black"
           style={{
             width: `320px`,
             height: "320px",
@@ -81,8 +81,8 @@ export function MetaApp({}) {
           }}
         >
           <div className="w-full h-full flex items-center flex-col justify-center">
-            <div className="py-3 text-center px-3">
-              Welcome to Pharmecy Conference
+            <div className="py-3 text-center px-3 text-xl underline">
+              Welcome to <br /> Pharmecy Conference
             </div>
             <div className="flex items-center justify-center">
               <button
@@ -100,7 +100,7 @@ export function MetaApp({}) {
                     showPhase: "game",
                   });
                 }}
-                className=" inline-block mx-2 p-3 w-32 h-32 bg-gray-200 text-center rounded-2xl"
+                className=" inline-block mx-2 p-3 w-32 h-32 bg-gray-200 shadow-inner shadow-gray-500  text-center rounded-2xl"
               >
                 High Quality Experience
               </button>
