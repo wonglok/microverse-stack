@@ -11,7 +11,7 @@ export function MetaverseGLB({ glb, offsetY = 0.01, children }) {
 
   useEffect(() => {
     useMeta.setState({
-      game: new YoMeta({ offsetY, camera, scene: glb.scene, gl }),
+      game: new YoMeta({ camera, gl }),
     });
 
     return () => {
@@ -19,8 +19,19 @@ export function MetaverseGLB({ glb, offsetY = 0.01, children }) {
         useMeta.getState()?.game.clean();
       }
     };
-    //
-  }, [camera, glb.scene, offsetY, gl]);
+  }, [camera, gl]);
+
+  useEffect(() => {
+    if (game && glb?.scene) {
+      game.parseScene({ scene: glb.scene });
+    }
+  }, [glb, game]);
+
+  useEffect(() => {
+    if (game && offsetY) {
+      game.offsetY = offsetY;
+    }
+  }, [glb, game]);
 
   useFrame(() => {
     if (game && game.updatePlayer && typeof game.updatePlayer === "function") {

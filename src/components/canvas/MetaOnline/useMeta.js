@@ -14,8 +14,10 @@ import { OrbitControls, RoundedBoxGeometry } from "three-stdlib";
 import { sceneToCollider } from "./sceneToCollider";
 
 export class YoMeta extends Object3D {
-  constructor({ camera, scene, gl, offsetY = 0.5 }) {
+  constructor({ camera, gl }) {
     super();
+
+    this.offsetY = 0.5;
 
     this.camera = camera;
     this.camera.fov = 75;
@@ -23,7 +25,6 @@ export class YoMeta extends Object3D {
       this.camera.fov = 90;
     }
     this.camera.updateProjectionMatrix();
-    this.scene = scene;
     this.controls = new OrbitControls(camera, gl.domElement);
     this.controls.enableDamping = false;
 
@@ -145,7 +146,6 @@ export class YoMeta extends Object3D {
         this.reset();
       });
     };
-    this.parseScene({ scene });
 
     // character
     this.player = new Mesh(
@@ -336,11 +336,11 @@ export class YoMeta extends Object3D {
       }
 
       // adjust the camera
-      this.player.position.y += offsetY;
+      this.player.position.y += this.offsetY;
       this.camera.position.sub(this.controls.target);
       this.controls.target.copy(this.player.position);
       this.camera.position.add(this.player.position);
-      this.player.position.y -= offsetY;
+      this.player.position.y -= this.offsetY;
 
       // if the player has fallen too far below the level reset their position to the start
       if (this.player.position.y < -25) {

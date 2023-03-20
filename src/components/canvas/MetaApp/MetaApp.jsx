@@ -72,30 +72,43 @@ export function MetaApp({}) {
 
       {showPhase === "menu" && (
         <div
-          className="bg-white absolute rounded-xl shadow-2xl flex items-center justify-center"
+          className="bg-white bg-opacity-30 absolute rounded-xl shadow-2xl  backdrop-blur-lg"
           style={{
-            width: `300px`,
-            height: "300px",
-            top: `calc(50% - 300px/  2)`,
-            left: `calc(50% - 300px/  2)`,
+            width: `320px`,
+            height: "320px",
+            top: `calc(50% - 320px/  2)`,
+            left: `calc(50% - 320px/  2)`,
           }}
         >
-          <button
-            onClick={() => {
-              useMeta.setState({ renderMdoe: "smooth", showPhase: "game" });
-            }}
-            className=" inline-block ml-1 p-3 w-32 h-32 bg-gray-200 text-center rounded-lg"
-          >
-            Smooth Experience
-          </button>
-          <button
-            onClick={() => {
-              useMeta.setState({ renderMdoe: "quality", showPhase: "game" });
-            }}
-            className=" inline-block mx-1 p-3 w-32 h-32 bg-gray-200 text-center rounded-lg"
-          >
-            High Quality Experience
-          </button>
+          <div className="w-full h-full flex items-center flex-col justify-center">
+            <div className="py-3 text-center px-3">
+              Welcome to Pharmecy Conference
+            </div>
+            <div className="flex items-center justify-center">
+              <button
+                onClick={() => {
+                  useMeta.setState({ renderMdoe: "smooth", showPhase: "game" });
+                }}
+                className=" inline-block ml-2 p-3 w-32 h-32 bg-gray-200 text-center rounded-2xl"
+              >
+                Smooth Experience
+              </button>
+              <button
+                onClick={() => {
+                  useMeta.setState({
+                    renderMdoe: "quality",
+                    showPhase: "game",
+                  });
+                }}
+                className=" inline-block mx-2 p-3 w-32 h-32 bg-gray-200 text-center rounded-2xl"
+              >
+                High Quality Experience
+              </button>
+            </div>
+            <div className="py-3 text-center px-3 text-xs text-gray-600">
+              Smooth Experience can run on older phones.
+            </div>
+          </div>
         </div>
       )}
 
