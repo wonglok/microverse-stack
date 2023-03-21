@@ -37,11 +37,12 @@ export function MetaApp(
   }
 ) {
   let showPhase = useMeta((r) => r.showPhase);
-  let renderMdoe = useMeta((r) => r.renderMdoe);
+  let renderMode = useMeta((r) => r.renderMode);
   //showPhase
   return (
     <div className="h-full w-full">
       <Canvas
+        dpr={[1, renderMode === "quality" ? 1 : 3]}
         onCreated={(st) => {
           st.gl.outputEncoding = sRGBEncoding;
         }}
@@ -49,13 +50,13 @@ export function MetaApp(
       >
         <Content></Content>
 
-        {renderMdoe === "smooth" && (
+        {renderMode === "smooth" && (
           <>
             <Environment preset="sunset"></Environment>
           </>
         )}
 
-        {renderMdoe === "quality" && (
+        {renderMode === "quality" && (
           <>
             <EnvSSR></EnvSSR>
           </>
@@ -75,6 +76,7 @@ export function MetaApp(
           </button>
         </div>
       )}
+
       {showPhase === "game" && (
         <div className="absolute bottom-0 right-4 z-40">
           {/*  */}
@@ -101,7 +103,7 @@ export function MetaApp(
             <div className="flex items-center justify-center">
               <button
                 onClick={() => {
-                  useMeta.setState({ renderMdoe: "smooth", showPhase: "game" });
+                  useMeta.setState({ renderMode: "smooth", showPhase: "game" });
                 }}
                 className=" inline-block mx-2 p-3 w-32 h-32 bg-gray-200 shadow-xl shadow-gray-500  text-center rounded-2xl"
               >
@@ -110,7 +112,7 @@ export function MetaApp(
               <button
                 onClick={() => {
                   useMeta.setState({
-                    renderMdoe: "quality",
+                    renderMode: "quality",
                     showPhase: "game",
                   });
                 }}
