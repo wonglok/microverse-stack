@@ -116,13 +116,13 @@ export function ChatRoom({ roomID = "general" }) {
   return (
     <>
       <div
-        className="p-2 bg-white z-30"
+        className="p-2 bg-white z-30  rounded-t-xl"
         style={{ display: show ? "block" : "none" }}
       >
         {/*  */}
         <div className="text-xs mb-1 flex justify-between">
           <div>Chat Room</div>
-          <div>
+          <div className="">
             <NickName
               rand={rand.current}
               onUpdateName={(name) => {
@@ -133,7 +133,7 @@ export function ChatRoom({ roomID = "general" }) {
           </div>
         </div>
 
-        <ul className=" h-72 overflow-scroll bg-slate-100" ref={rMessages}>
+        <ul className=" h-72 overflow-scroll bg-slate-100 " ref={rMessages}>
           {messages.map((m) => {
             return (
               <li className="text-xs" key={m.id}>
@@ -213,8 +213,8 @@ function NickName({
     <>
       <input
         ref={ref}
-        className=" text-right inline-block"
-        onKeyDown={(ev) => {
+        className=" text-right inline-block underline focus:outline-none"
+        onKeyUp={(ev) => {
           ev.stopPropagation();
           let slug = slugify(ev.target.value);
           localStorage.setItem("storedNameLocally", slug);
