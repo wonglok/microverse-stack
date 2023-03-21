@@ -76,7 +76,7 @@ export function MetaApp(
         </div>
       )}
       {showPhase === "game" && (
-        <div className="absolute bottom-0 right-4">
+        <div className="absolute bottom-0 right-4 z-40">
           {/*  */}
           {/*  */}
           <ChatRoom roomID="general"></ChatRoom>
