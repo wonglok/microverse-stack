@@ -30,6 +30,7 @@
     "react-router-dom": "^6.9.0",
     "reconnecting-websocket": "^4.4.0",
     "sharedb": "^3.3.0",
+    "slugify": "^1.6.5",
     "socket.io": "^4.6.1",
     "socket.io-client": "^4.6.1",
     "three": "^0.150.1",
