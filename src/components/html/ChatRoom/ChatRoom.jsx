@@ -133,7 +133,7 @@ export function ChatRoom({ roomID = "general" }) {
           </div>
         </div>
 
-        <ul className=" h-72 overflow-scroll bg-slate-100 " ref={rMessages}>
+        <ul className=" h-72 overflow-scroll bg-slate-100 p-1 " ref={rMessages}>
           {messages.map((m) => {
             return (
               <li className="text-xs" key={m.id}>
@@ -146,6 +146,9 @@ export function ChatRoom({ roomID = "general" }) {
         <div className="sender bg-gray-200">
           <input
             type="text"
+            onFocus={() => {
+              window.dispatchEvent(new CustomEvent("cancel-move"));
+            }}
             className="p-3 py-2 bg-gray-300"
             ref={rInput}
             onKeyDown={(ev) => {
