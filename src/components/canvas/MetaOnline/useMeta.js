@@ -359,7 +359,7 @@ export class YoMeta extends Object3D {
 
 export const useMeta = create((set, get) => {
   return {
-    renderMdoe: "smooth",
+    renderMode: "smooth",
     showPhase: "menu",
     game: false,
   };
