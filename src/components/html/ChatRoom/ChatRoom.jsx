@@ -146,7 +146,7 @@ export function ChatRoom({ roomID = "general" }) {
           })}
         </ul>
 
-        <div className="sender ">
+        <div className="sender mx-1 ">
           <input
             type="text"
             onFocus={() => {
@@ -154,7 +154,7 @@ export function ChatRoom({ roomID = "general" }) {
                 new CustomEvent("cancel-move", { detail: 123 })
               );
             }}
-            className="p-3 py-2 rounded-l-2xl bg-gray-200 shadow-slate-400 shadow-inner "
+            className="p-3 py-2 rounded-l-xl text-sm bg-gray-200 shadow-slate-400 shadow-inner "
             ref={rInput}
             onKeyDown={(ev) => {
               ev.stopPropagation();
@@ -164,7 +164,7 @@ export function ChatRoom({ roomID = "general" }) {
             }}
           ></input>
           <button
-            className="px-3 py-2 bg-green-300 text-green-800 rounded-r-2xl  "
+            className="px-3 py-2 bg-green-300 text-green-800 rounded-r-xl text-sm  "
             type="button"
             onClick={onSend}
           >
