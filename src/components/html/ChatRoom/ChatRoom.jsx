@@ -116,11 +116,11 @@ export function ChatRoom({ roomID = "general" }) {
   return (
     <>
       <div
-        className="p-2 bg-white z-30  rounded-t-xl"
+        className="p-2 bg-white z-30  rounded-t-xl border-gray-300 shadow shadow-slate-500"
         style={{ display: show ? "block" : "none" }}
       >
         {/*  */}
-        <div className="text-xs mb-1 flex justify-between">
+        <div className="text-xs mb-2 flex justify-between">
           <div>Chat Room</div>
           <div className="">
             <NickName
@@ -133,7 +133,10 @@ export function ChatRoom({ roomID = "general" }) {
           </div>
         </div>
 
-        <ul className=" h-72 overflow-scroll bg-slate-100 p-1 " ref={rMessages}>
+        <ul
+          className=" h-72 overflow-scroll bg-slate-100 py-1 p-2 shadow-inner shadow-slate-400 rounded-xl mx-1 mb-2 "
+          ref={rMessages}
+        >
           {messages.map((m) => {
             return (
               <li className="text-xs" key={m.id}>
@@ -143,7 +146,7 @@ export function ChatRoom({ roomID = "general" }) {
           })}
         </ul>
 
-        <div className="sender bg-gray-200">
+        <div className="sender ">
           <input
             type="text"
             onFocus={() => {
@@ -151,7 +154,7 @@ export function ChatRoom({ roomID = "general" }) {
                 new CustomEvent("cancel-move", { detail: 123 })
               );
             }}
-            className="p-3 py-2 bg-gray-300"
+            className="p-3 py-2 rounded-l-2xl bg-gray-200 shadow-slate-400 shadow-inner "
             ref={rInput}
             onKeyDown={(ev) => {
               ev.stopPropagation();
@@ -160,7 +163,11 @@ export function ChatRoom({ roomID = "general" }) {
               }
             }}
           ></input>
-          <button className="px-3 py-2" type="button" onClick={onSend}>
+          <button
+            className="px-3 py-2 bg-green-300 text-green-800 rounded-r-2xl  "
+            type="button"
+            onClick={onSend}
+          >
             Send
           </button>
         </div>
