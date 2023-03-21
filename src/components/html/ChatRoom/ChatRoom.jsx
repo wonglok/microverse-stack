@@ -147,7 +147,9 @@ export function ChatRoom({ roomID = "general" }) {
           <input
             type="text"
             onFocus={() => {
-              window.dispatchEvent(new CustomEvent("cancel-move"));
+              window.dispatchEvent(
+                new CustomEvent("cancel-move", { detail: 123 })
+              );
             }}
             className="p-3 py-2 bg-gray-300"
             ref={rInput}
@@ -217,6 +219,9 @@ function NickName({
       <input
         ref={ref}
         className=" text-right inline-block underline focus:outline-none"
+        onFocus={() => {
+          window.dispatchEvent(new CustomEvent("cancel-move", { detail: 123 }));
+        }}
         onKeyUp={(ev) => {
           ev.stopPropagation();
           let slug = slugify(ev.target.value);

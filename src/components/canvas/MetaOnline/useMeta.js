@@ -125,7 +125,14 @@ export class YoMeta extends Object3D {
     window.addEventListener("keyup", up);
     window.addEventListener("blur", up);
     window.addEventListener("focus", up);
+    window.addEventListener("cancel-move", () => {
+      this.params.fwdPressed = false;
+      this.params.bkdPressed = false;
+      this.params.rgtPressed = false;
+      this.params.lftPressed = false;
+    });
 
+    //
     this.weakMap = new WeakMap();
     this.parseScene = async ({ scene }) => {
       if (this.weakMap.has(scene)) {
