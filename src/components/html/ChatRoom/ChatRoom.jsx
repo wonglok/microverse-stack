@@ -154,6 +154,7 @@ export function ChatRoom({ roomID = "general" }) {
                 new CustomEvent("cancel-move", { detail: 123 })
               );
             }}
+            //
             className="p-3 py-2 rounded-l-xl text-sm bg-gray-200 shadow-slate-400 shadow-inner "
             ref={rInput}
             onKeyDown={(ev) => {
