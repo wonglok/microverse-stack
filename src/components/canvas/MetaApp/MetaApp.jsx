@@ -61,6 +61,9 @@ export function MetaApp(
             <EnvSSR></EnvSSR>
           </>
         )}
+
+        {/*  */}
+        {/*  */}
       </Canvas>
 
       {showPhase === "game" && <JoyStick></JoyStick>}
