@@ -104,7 +104,9 @@ export function ChatRoom({ roomID = "general" }) {
         setShow(true);
       }
     };
+
     window.addEventListener("resize", hh);
+    window.dispatchEvent(new Event("resize"));
 
     return () => {
       window.removeEventListener("resize", hh);
