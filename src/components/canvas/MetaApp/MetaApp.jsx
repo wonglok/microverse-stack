@@ -7,6 +7,7 @@ import { Canvas } from "@react-three/fiber";
 import { sRGBEncoding } from "three";
 import { clone } from "three/examples/jsm/utils/SkeletonUtils";
 import { useMeta } from "../MetaOnline/useMeta";
+import { ChatRoom } from "../../html/ChatRoom/ChatRoom";
 
 function Content() {
   return (
@@ -30,7 +31,11 @@ function Content() {
   );
 }
 
-export function MetaApp({}) {
+export function MetaApp(
+  {
+    //
+  }
+) {
   let showPhase = useMeta((r) => r.showPhase);
   let renderMdoe = useMeta((r) => r.renderMdoe);
   //showPhase
@@ -43,6 +48,7 @@ export function MetaApp({}) {
         className="h-full w-full"
       >
         <Content></Content>
+
         {renderMdoe === "smooth" && (
           <>
             <Environment preset="sunset"></Environment>
@@ -69,8 +75,14 @@ export function MetaApp({}) {
           </button>
         </div>
       )}
-
-      {/* https://microverse-tencent.meta-os.app/ */}
+      {showPhase === "game" && (
+        <div className="absolute bottom-0 right-4">
+          {/*  */}
+          {/*  */}
+          <ChatRoom roomID="general"></ChatRoom>
+          {/*  */}
+        </div>
+      )}
 
       {showPhase === "menu" && (
         <div

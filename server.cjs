@@ -35,22 +35,35 @@ app.use(express.static("dist"));
 // });
 
 //
-let rooms = {};
+let rooms = new Map();
 
 io.on("connection", (socket) => {
   console.log("a user connected", socket.id);
-
-  socket.on("enter", () => {
-    //
-  });
-  socket.on("walk", (ev) => {
-    io.emit("walk", ev);
-  });
-
   socket.on("disconnect", () => {
-    console.log("user disconnected", socket.id);
+    console.log("a user disconnected", socket.id);
+  });
+
+  // metaverse
+  socket.on("enter-room", (ev) => {
+    socket.join(ev.roomID);
+  });
+  socket.on("leave-room", (ev) => {
+    socket.leave(ev.roomID);
+  });
+  //
+
+  socket.on("chat-message", (ev) => {
+    io.to(ev.roomID).emit("chat-message", ev);
+    socket.to(ev.roomID).emit("chat-message", ev);
+  });
+
+  //
+  socket.on("walk-in-room", (ev) => {
+    io.to(ev.roomID).emit("walk-in-room", ev);
   });
 });
+
+//
 
 server.listen(port, () => {
   console.log("listening on *:3000");
