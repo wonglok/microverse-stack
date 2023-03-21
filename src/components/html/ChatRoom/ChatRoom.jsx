@@ -30,6 +30,8 @@ export function ChatRoom({ roomID = "general" }) {
       let storedName = localStorage.getItem("storedNameLocally");
       if (!storedName) {
         //
+
+        //
         const randomName = uniqueNamesGenerator({
           dictionaries: [colors, animals],
           separator: "-",
