@@ -1,0 +1,1 @@
+import{r as e,j as o,F as a,_ as i}from"./index-6923d608.js";function _({getter:r=()=>i(()=>import("./AdminLayout-67712d14.js"),["assets/AdminLayout-67712d14.js","assets/index-6923d608.js","assets/index-f6a8208a.css"])}){let[s,n]=e.useState(null);return e.useEffect(()=>{r().then(t=>t.AdminLayout).then(t=>{n(o(t,{}))})},[]),o(a,{children:s})}export{_ as Admin};

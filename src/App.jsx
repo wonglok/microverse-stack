@@ -5,18 +5,31 @@ import {
   Link,
   useRouteError,
 } from "react-router-dom";
-import { MetaApp } from "./components/canvas/MetaApp/MetaApp";
-import { AdminLogin } from "./components/html/AdminLogin/AdminLogin.jsx";
+// import { MetaApp } from "./components/canvas/MetaApp/MetaApp";
+// import { Admin } from "./components/html/Admin/Admin.jsx";
+import { LazyLoad } from "./components/html/LazyLoad/LazyLoad.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MetaApp></MetaApp>,
+    element: (
+      <LazyLoad
+        lazy={() =>
+          import("./components/canvas/MetaApp/MetaApp").then((r) => r.MetaApp)
+        }
+      ></LazyLoad>
+    ),
     errorElement: <ErrorBoundary></ErrorBoundary>,
   },
   {
     path: "/admin",
-    element: <AdminLogin></AdminLogin>,
+    element: (
+      <LazyLoad
+        lazy={() =>
+          import("./components/html/Admin/Admin.jsx").then((r) => r.Admin)
+        }
+      ></LazyLoad>
+    ),
     errorElement: <ErrorBoundary></ErrorBoundary>,
   },
   // {
