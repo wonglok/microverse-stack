@@ -1,12 +1,10 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
 import { MenuItems } from "./MenuItems";
+import { Link, useHref } from "react-router-dom";
 
 export function Menu() {
-  let router = useRouter();
-
+  let href = useHref();
   let getLinkClass = ({ path }) => {
-    if (router.pathname === path) {
+    if (href === path) {
       return `mb-2 text-black bg-teal-300 rounded-xl`;
     } else {
       return `mb-2 text-black bg-white rounded-xl`;

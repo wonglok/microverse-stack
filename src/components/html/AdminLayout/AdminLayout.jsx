@@ -1,11 +1,16 @@
-import { LogoutButton } from "../Menu/LogoutButton";
-import { Menu } from "../Menu/Menu";
+// import { LogoutButton } from "../Menu/LogoutButton";
+// import { MenuItems } from "../Menu/MenuItems";
+
+import { useHref } from "react-router-dom";
 import { MenuItems } from "../Menu/MenuItems";
-import { useRouter } from "next/router";
+import { Menu } from "../Menu/Menu";
+import { LogoutButton } from "../Menu/LogoutButton";
 
 export function AdminLayout({ children }) {
-  let router = useRouter();
-  let route = router.asPath;
+  // let router = useRouter();
+  let route = useHref();
+  // let router = useRouter();
+  // let route = router.asPath;
   return (
     <div className="h-full w-full bg-gradient-to-t from-green-200  to-cyan-900 p-5">
       <div

@@ -3,13 +3,20 @@ import {
   RouterProvider,
   // Route,
   Link,
+  useRouteError,
 } from "react-router-dom";
 import { MetaApp } from "./components/canvas/MetaApp/MetaApp";
+import { AdminLogin } from "./components/html/AdminLogin/AdminLogin.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MetaApp></MetaApp>,
+    errorElement: <ErrorBoundary></ErrorBoundary>,
+  },
+  {
+    path: "/admin",
+    element: <AdminLogin></AdminLogin>,
     errorElement: <ErrorBoundary></ErrorBoundary>,
   },
   // {
@@ -25,10 +32,7 @@ const router = createBrowserRouter([
 ]);
 
 function ErrorBoundary() {
-  let error = useRouteError();
-  console.error(error);
-  // Uncaught ReferenceError: path is not defined
-  return <div>Dang! {JSON.stringify(error)}</div>;
+  return <div>Dang!</div>;
 }
 
 export default function App() {
