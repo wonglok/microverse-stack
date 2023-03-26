@@ -10,6 +10,7 @@ import {
 import { LazyLoad } from "./components/html/LazyLoad/LazyLoad.jsx";
 
 const router = createBrowserRouter([
+  //
   {
     path: "/",
     element: (
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorBoundary></ErrorBoundary>,
   },
+  //
   {
     path: "/admin",
     element: (
