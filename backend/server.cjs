@@ -92,11 +92,16 @@ db.mongoose
 //   res.json({ message: "Welcome to microverse application." });
 // });
 
+// let fs = require("fs");
+app.use(express.static(path.join(__dirname, "../dist")));
+
+app.get("*", (request, response) => {
+  response.sendFile(path.resolve(__dirname, "../dist/index.html"));
+});
+
 // routes
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
-
-app.use(express.static(path.join(__dirname, "../dist")));
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
