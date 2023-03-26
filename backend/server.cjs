@@ -30,8 +30,6 @@ app.use(express.urlencoded({ extended: true }));
 //   })
 // );
 
-app.use(express.static("../dist"));
-
 const { Server } = require("socket.io");
 
 const http = require("http");
@@ -72,6 +70,7 @@ io.on("connection", (socket) => {
 });
 
 const db = require("./app/models");
+const path = require("path");
 const Role = db.role;
 
 db.mongoose
@@ -88,14 +87,16 @@ db.mongoose
     process.exit();
   });
 
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to microverse application." });
-});
+// // simple route
+// app.get("/", (req, res) => {
+//   res.json({ message: "Welcome to microverse application." });
+// });
 
 // routes
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
+
+app.use(express.static(path.join(__dirname, "../dist")));
 
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;

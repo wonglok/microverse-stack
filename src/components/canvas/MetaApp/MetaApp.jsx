@@ -1,5 +1,4 @@
 import { Environment } from "@react-three/drei";
-import { JoyStick } from "../../../components/canvas/MetaOnline/Joystick";
 import { LoaderGLB } from "../../../components/canvas/MetaOnline/LoaderGLB";
 import { MetaverseGLB } from "../../../components/canvas/MetaOnline/MetaverseGLB";
 import { EnvSSR } from "../../../components/canvas/RealismEffect/EnvSSR";
@@ -7,6 +6,7 @@ import { Canvas } from "@react-three/fiber";
 import { sRGBEncoding } from "three";
 import { clone } from "three/examples/jsm/utils/SkeletonUtils";
 import { useMeta } from "../MetaOnline/useMeta";
+import { JoyStick } from "../../../components/canvas/MetaOnline/Joystick";
 import { ChatRoom } from "../../html/ChatRoom/ChatRoom";
 
 function Content() {

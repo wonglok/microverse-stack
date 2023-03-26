@@ -1,8 +1,8 @@
 import {
-  Environment,
-  Sphere,
-  TransformControls,
-  useEnvironment,
+  // Environment,
+  // Sphere,
+  // TransformControls,
+  // useEnvironment,
   Stats,
   useTexture,
 } from "@react-three/drei";
