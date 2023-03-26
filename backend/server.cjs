@@ -1,6 +1,10 @@
+const dotenv = require("dotenv");
+dotenv.config();
+
 const express = require("express");
 const cors = require("cors");
-const cookieSession = require("cookie-session");
+
+// const cookieSession = require("cookie-session");
 
 const dbConfig = require("./app/config/db.config.js");
 
